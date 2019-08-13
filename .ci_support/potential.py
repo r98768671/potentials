@@ -38,6 +38,7 @@ new_data_frame = pandas.DataFrame({'Config': config_lst,
                                    'Species': species_lst})
 merged_data_frame = pandas.concat([prev_data_frame, new_data_frame], sort=False).reset_index(drop=True)
 merged_data_frame = merged_data_frame.loc[:, ~merged_data_frame.columns.str.contains('^Unnamed')]
+merged_data_frame.drop_duplicates(subset='Name', inplace=True)
 merged_data_frame.to_csv(os.path.join(pyiron_pot_path, 'potentials_lammps.csv'))
 os.makedirs('pyiron-resources/lammps/potentials/' + potential_folder, exist_ok=True)
 for filelst in file_name_lst:

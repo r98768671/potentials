@@ -17,7 +17,6 @@ matrix:
         - git config --global user.name "${GH_USER}"
         - git clone https://${GH_USER}:${GH_TOKEN}@github.com/pyiron/pyiron-resources.git
         - mv 'data/atomman.lammps.Potential models/NIST IPR' NISTiprpy
-        - rm -rf iprPy
         - pip install atomman 
       script:
         - python .ci_support/potential.py
